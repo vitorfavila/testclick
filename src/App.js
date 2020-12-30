@@ -1,7 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
 
+function openInNewTab(url) {
+  var win = window.open(url, '_blank');
+  win.focus();
+}
+
 function App() {
+  const handleClick = (event) => {
+    if (event.metaKey || event.ctrlKey) {
+      openInNewTab(event.target.href)
+    }
+
+    console.log('standard click')
+    event.preventDefault()
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -12,6 +26,7 @@ function App() {
         <a
           className="App-link"
           href="https://reactjs.org"
+          onClick={handleClick}
           target="_blank"
           rel="noopener noreferrer"
         >
